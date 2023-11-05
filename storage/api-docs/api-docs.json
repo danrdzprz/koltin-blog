@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Blog publico",
+        "description": "API para blog de la prueba técnica para koltin",
+        "contact": {
+            "email": "daniel.rpda@gmail.com"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/api/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Display a listing of posts",
+                "operationId": "fbf49a8a37f41e6323a594a41dd0d7cd",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of posts."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    }
+}

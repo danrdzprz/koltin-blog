@@ -21,9 +21,6 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    #[OA\Get(path: '/api/posts')]
-    #[OA\Response(response: 200, description: 'AOK')]
-    #[OA\Response(response: 401, description: 'Not allowed')]
     public function index(): LengthAwarePaginator
     {
         return $this->userRepository->getAllUsers();
