@@ -11,7 +11,7 @@ class CommentCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,7 @@ class CommentCreateRequest extends FormRequest
     {
         return [
             'text' => 'required|string',
+            'post_id' => 'required|exists:posts,id',
         ];
     }
 }
