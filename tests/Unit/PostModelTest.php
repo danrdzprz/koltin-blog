@@ -10,7 +10,7 @@ class PostModelTest extends TestCase
     /**
      * Unit test for model.
      */
-    public function testCreateModel(): void
+    public function testPostModel(): void
     {
         $record = Post::factory()->create();
         $this->assertDatabaseHas('posts', [

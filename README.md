@@ -6,15 +6,15 @@
 
 ./vendor/bin/sail composer require laravel/pint --dev
 
-composer require "darkaonline/l5-swagger"
+./vendor/bin/sail composer require "darkaonline/l5-swagger"
 
-artisan l5-swagger:generate
+./vendor/bin/sail artisan l5-swagger:generate
 
-artisan config:cache
+./vendor/bin/sail artisan config:cache
 
 ./vendor/bin/sail composer phpstan 
 
-./vendor/bin/sail composer pint 
+./vendor/bin/sail composer p 
 
 
 ## Code of Conduct
