@@ -16,6 +16,7 @@ use Illuminate\Routing\Controller as BaseController;
  *              "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
  *          }
  *      },
+ *
  *      @OA\Contact(
  *          email="daniel.rpda@gmail.com"
  *      ),
