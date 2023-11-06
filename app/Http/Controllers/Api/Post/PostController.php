@@ -24,20 +24,50 @@ class PostController extends Controller
      * @return \Illuminate\Http\LengthAwarePaginator
      */
     /**
-     * @OA\Get(
+     *  @OA\Get(
      *     path="/api/posts",
-     *     tags={"Posts"},
-     *     summary="Display a listing of posts",
+     *     tags={"Post"},
+     *     summary="Paginated post list with user and post",
+     *     security={{"bearerAuth":{}}}, *
      *
-     *     @OA\Response(
-     *         response=200,
-     *         description="Display a listing of posts."
+     *      @OA\Response(
+     *          response=200,
+     *          description="Author registered successfully",
+     *
+     *          @OA\JsonContent(
+     *
+     *              @OA\Property(property="current_page", type="number", example=1),
+     *              @OA\Property(property="data", type="array",
+     *
+     *              @OA\Items(
+     *
+     *                  @OA\Property(property="id", type="number", example=1),
+     *                  @OA\Property(property="title", type="string", example="example"),
+     *                  @OA\Property(property="text", type="string", example="example"),
+     *              )),
+     *              @OA\Property(property="first_page_url", type="string", example="http://127.0.0.1/api/posts?page=1"),
+     *              @OA\Property(property="from", type="number", example=1),
+     *              @OA\Property(property="last_page", type="number", example=1),
+     *              @OA\Property(property="last_page_url", type="string", example="http://127.0.0.1/api/posts?page=1"),
+     *              @OA\Property(property="per_page", type="number", example=1),
+     *              @OA\Property(property="prev_page_url", type="string", example="http://127.0.0.1/api/posts?page=1"),
+     *              @OA\Property(property="to", type="number", example=1),
+     *              @OA\Property(property="total", type="number", example=1),
+     *        )
      *     ),
-     *     @OA\Response(
-     *         response="default",
-     *         description="Ha ocurrido un error."
+     *
+     *   @OA\Response(
+     *    response=401,
+     *    description="Required authentication",
+     *
+     *    @OA\JsonContent(
+     *
+     *       @OA\Property(property="code", type="number", example=401),
+     *       @OA\Property(property="message", type="object", example="Unauthenticated")
+     *        )
      *     )
-     * )
+     *    )
+     *  )
      */
     public function index(): LengthAwarePaginator
     {

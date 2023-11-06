@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Models\Comment;
+use Tests\TestCase;
 
 class CleanUpTextCommentTest extends TestCase
 {
@@ -15,7 +15,7 @@ class CleanUpTextCommentTest extends TestCase
         $harmful_text = '<script>alert("Harmful Script");</script> <p style="border:1px solid black" class="text-gray-700">Text test</p>';
         $record = Comment::factory()->create(
             [
-                'text'=>$harmful_text
+                'text' => $harmful_text,
             ]
         );
 

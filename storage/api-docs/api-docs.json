@@ -15,18 +15,281 @@
         "/api/posts": {
             "get": {
                 "tags": [
-                    "Posts"
+                    "Post"
                 ],
-                "summary": "Display a listing of posts",
+                "summary": "Paginated post list with user and post",
                 "operationId": "fbf49a8a37f41e6323a594a41dd0d7cd",
                 "responses": {
                     "200": {
-                        "description": "Display a listing of posts."
+                        "description": "Author registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "example"
+                                                    },
+                                                    "text": {
+                                                        "type": "string",
+                                                        "example": "example"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "example": "http://127.0.0.1/api/posts?page=1"
+                                        },
+                                        "from": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "last_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "example": "http://127.0.0.1/api/posts?page=1"
+                                        },
+                                        "per_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "example": "http://127.0.0.1/api/posts?page=1"
+                                        },
+                                        "to": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "number",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     },
-                    "default": {
-                        "description": "Ha ocurrido un error."
+                    "401": {
+                        "description": "Required authentication",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "object",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/authors": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Paginated authors list with comments and post",
+                "operationId": "aef2397961a0e3fdfc433aa36b8707b2",
+                "responses": {
+                    "200": {
+                        "description": "Author registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "current_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "example"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "example"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "first_page_url": {
+                                            "type": "string",
+                                            "example": "http://127.0.0.1/api/posts?page=1"
+                                        },
+                                        "from": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "last_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "last_page_url": {
+                                            "type": "string",
+                                            "example": "http://127.0.0.1/api/posts?page=1"
+                                        },
+                                        "per_page": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "prev_page_url": {
+                                            "type": "string",
+                                            "example": "http://127.0.0.1/api/posts?page=1"
+                                        },
+                                        "to": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "number",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Register a new author",
+                "operationId": "047111b702e7fabdca63136418df66c3",
+                "requestBody": {
+                    "description": "Provide All Info Below",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "name",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "Mario"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "format": "text",
+                                        "example": "mario@example.org"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "123467890"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "format": "text",
+                                        "example": "123467890"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Author registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "false"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Author registered successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Author Not register",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number",
+                                            "example": 422
+                                        },
+                                        "message": {
+                                            "type": "object",
+                                            "example": "message:{email:[required]}"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }

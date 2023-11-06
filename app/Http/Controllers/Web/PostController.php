@@ -6,6 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\PostRepositoryInterface;
 use Illuminate\View\View;
 
+/**
+ * @OA\SecurityScheme(
+ *     securityScheme="bearerAuth",
+ *     type="http",
+ *     scheme="bearer",
+ *     bearerFormat="JWT",
+ * )
+ */
 class PostController extends Controller
 {
     /**

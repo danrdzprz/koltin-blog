@@ -39,7 +39,7 @@ class Comment extends Model
     protected function text(): Attribute
     {
         return Attribute::make(
-            set: fn (string $value) => trim( Purifier::clean($value) ),
+            set: fn (string $value) => trim(Purifier::clean($value)),
         );
     }
 
