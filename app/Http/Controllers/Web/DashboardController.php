@@ -21,7 +21,7 @@ class DashboardController extends Controller
      */
     public function index(): View
     {
-        $posts = $this->postRepository->getAllPosts();
+        $posts = $this->postRepository->getAllPosts(5);
 
         return view('home', ['posts' => $posts]);
     }

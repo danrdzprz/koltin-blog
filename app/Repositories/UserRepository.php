@@ -11,7 +11,7 @@ class UserRepository implements UserRepositoryInterface
 {
     public function getAllUsers(): LengthAwarePaginator
     {
-        return User::paginate(15);
+        return User::with('posts', 'comments')->paginate(15);
     }
 
     public function getUserById(int $UserId): User

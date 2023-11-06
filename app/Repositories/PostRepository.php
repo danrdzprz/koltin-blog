@@ -8,9 +8,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PostRepository implements PostRepositoryInterface
 {
-    public function getAllPosts(): LengthAwarePaginator
+    public function getAllPosts(int $total = 10): LengthAwarePaginator
     {
-        return Post::paginate(15);
+        return Post::with('user', 'comments')->paginate($total);
     }
 
     public function getPostById(int $PostId): Post

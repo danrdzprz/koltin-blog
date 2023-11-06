@@ -33,6 +33,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -58,7 +60,7 @@ class User extends Authenticatable
     /**
      * Get the post related with the user.
      */
-    public function post(): HasMany
+    public function posts(): HasMany
     {
         return $this->hasMany(
             related: Post::class,

@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface PostRepositoryInterface
 {
-    public function getAllPosts(): LengthAwarePaginator;
+    public function getAllPosts(int $total = 10): LengthAwarePaginator;
 
     public function getPostById(int $postId): Post;
 

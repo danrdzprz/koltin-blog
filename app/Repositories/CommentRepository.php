@@ -29,7 +29,7 @@ class CommentRepository implements CommentRepositoryInterface
 
     public function getAllCommentsByPost(int $PostId): array
     {
-        return Comment::where(['post_id' => $PostId])->get()->toArray();
+        return Comment::with('user')->where(['post_id' => $PostId])->get()->toArray();
     }
 
     public function createComment(array $CommentDetails): Comment

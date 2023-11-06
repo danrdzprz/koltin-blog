@@ -17,6 +17,6 @@
             </div>
         </div>
     @endforeach
-    {{ $posts->render() }}
+    {{ $posts->links() }}
 </div>
 @endsection
