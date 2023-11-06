@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Mews\Purifier\Facades\Purifier;
 
 class Post extends Model
 {
@@ -31,6 +33,16 @@ class Post extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * clean up the text attribute.
+     */
+    protected function text(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => Trim( Purifier::clean($value) ),
+        );
+    }
 
     /**
      * Get the user that owns the post.

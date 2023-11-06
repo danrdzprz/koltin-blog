@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Mews\Purifier\Facades\Purifier;
 
 class Comment extends Model
 {
@@ -30,6 +32,16 @@ class Comment extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * clean up the text attribute.
+     */
+    protected function text(): Attribute
+    {
+        return Attribute::make(
+            set: fn (string $value) => trim( Purifier::clean($value) ),
+        );
+    }
 
     /**
      * Get the user that owns the comment.

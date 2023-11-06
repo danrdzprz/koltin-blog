@@ -29,10 +29,10 @@
         <div class="col-md-12 mb-4">
             <div class="card">
             <div class="card-header">
-                {{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}
+                <a href="{{ route('web.authors.show', ['author_id' => $post->user->id]) }}" class="d-inline-block mb-2 text-success"> {{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}</a>
             </div>
             <div class="card-body">
-                {{ $comment->text }}
+                {!! $comment->text !!}
             </div>
             </div>
         </div>
