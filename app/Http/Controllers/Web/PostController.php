@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\PostRepositoryInterface;
 use Illuminate\View\View;
 
-class DashboardController extends Controller
+class PostController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,12 +17,10 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Display the specified resource.
      */
-    public function index(): View
+    public function show(string $post): View
     {
-        $posts = $this->postRepository->getAllPosts();
-
-        return view('home', ['posts' => $posts]);
+        return view('posts.index');
     }
 }
