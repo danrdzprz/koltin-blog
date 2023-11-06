@@ -23,7 +23,7 @@ class ExportComments extends Command implements Isolatable
      *
      * @var string
      */
-    protected $signature = 'export:comments ';
+    protected $signature = 'export:comments';
 
     /**
      * The console command description.
