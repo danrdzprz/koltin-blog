@@ -12,15 +12,19 @@
 
 ## Comandos
 
-./vendor/bin/sail up -d
+```bash
+# ejecutar phpstan
+$ ./vendor/bin/sail composer phpstan 
 
-./vendor/bin/sail artisan test
+# exportar comentarios
+$ ./vendor/bin/sail artisan export:comments
 
-./vendor/bin/sail artisan config:cache
+# levantar contenedores
+$ ./vendor/bin/sail up -d
 
-./vendor/bin/sail composer phpstan 
-
-./vendor/bin/sail composer pint
+# bajar contenedores
+$ ./vendor/bin/sail down
+```
 
 ## Requisitos
 
@@ -33,7 +37,8 @@
 
 
 ## Notas
-En esta prueba me decidí por el patrón repositorio para la reutilización de código. 
-Me hubiera gustado usar la architectura hexagonal pero por tiempo he decidido no usarla.
-Me resulto dificil usar phpstan y sobre todo swagger
-Creo que estoy mas acostumbrado a usar postman para la documentacion de la apí.
+En esta prueba me decidí por el patrón repositorio para la reutilización de código.
+Ya que tenemos una parte de api, un comando y la parte visual. Para esta última decidí usar bootstrap y blade. Me hubiera gustado usar vue o ajax para que fuera más dinámica la página.
+He tenido problemas usando usar phpstan y sobre todo swagger.
+Creo que estoy más acostumbrado a usar postman para la documentación de la api.
+Por tiempo tampoco pude hacer muchas pruebas, pero he validado todo. Incluso el comando para exportar. Gracias por leerme.
