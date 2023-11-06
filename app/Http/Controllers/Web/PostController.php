@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\CommentRepositoryInterface;
 use App\Interfaces\PostRepositoryInterface;
 use Illuminate\View\View;
 
@@ -13,6 +14,7 @@ class PostController extends Controller
      */
     public function __construct(
         protected PostRepositoryInterface $postRepository,
+        protected CommentRepositoryInterface $commentRepository,
     ) {
     }
 
@@ -22,7 +24,8 @@ class PostController extends Controller
     public function show(int $post_id): View
     {
         $post = $this->postRepository->getPostById($post_id);
+        $comments = $this->commentRepository->getAllCommentsByPost($post_id);
 
-        return view('posts.index', ['post' => $post]);
+        return view('posts.index', ['post' => $post, 'comments' => $comments]);
     }
 }

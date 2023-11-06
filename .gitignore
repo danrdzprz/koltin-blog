@@ -4,6 +4,8 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/credentials.json
+/credentials.json
 /vendor
 .env
 .env.backup

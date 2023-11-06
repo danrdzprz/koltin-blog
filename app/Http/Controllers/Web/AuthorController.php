@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\CommentRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use Illuminate\View\View;
 
@@ -13,6 +14,7 @@ class AuthorController extends Controller
      */
     public function __construct(
         protected UserRepositoryInterface $userRepository,
+        protected CommentRepositoryInterface $commentRepository,
     ) {
     }
 
@@ -23,6 +25,8 @@ class AuthorController extends Controller
     {
         $author = $this->userRepository->getUserById($author_id);
 
-        return view('authors.index', ['author' => $author]);
+        $comments = $this->commentRepository->getAllCommentsByAuthor($author->id);
+
+        return view('authors.index', ['author' => $author, 'comments' => $comments]);
     }
 }

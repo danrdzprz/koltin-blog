@@ -15,14 +15,14 @@
     </div>
 
     <div class="row">
-        @foreach($author->comments as $comment)
+        @foreach($comments as $comment)
         <div class="col-md-12 mb-4">
             <div class="card">
             <div class="card-header">
                 {{ $comment->created_at->diffForHumans() }} - <a href="{{ route('web.posts.show', ['post_id' => $comment->post->id]) }}" class="d-inline-block mb-2 text-primary">Show Post</a>
             </div>
             <div class="card-body">
-                {{ $comment->text }}
+                {!! $comment->text !!}
             </div>
             </div>
         </div>

@@ -8,6 +8,7 @@
 - `laravel/sail`: Uso de contenedores
 - `laravel/Purifier`: Limpia los campos para los comentarios y los posts
 - `bootstrap`: Para las vistas
+- `laravel-google-sheets`: Para exportar a google sheets
 
 ## Comandos
 

@@ -70,5 +70,6 @@ return [
     |
     */
     'config' => [
+        'spreadsheet_id' => env('SPREADSHEET_ID', ''),
     ],
 ];

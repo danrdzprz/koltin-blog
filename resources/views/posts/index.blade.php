@@ -25,11 +25,11 @@
     </div>
 
     <div class="row">
-        @foreach($post->comments as $comment)
+        @foreach($comments as $comment)
         <div class="col-md-12 mb-4">
             <div class="card">
             <div class="card-header">
-                <a href="{{ route('web.authors.show', ['author_id' => $post->user->id]) }}" class="d-inline-block mb-2 text-success"> {{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}</a>
+                <a href="{{ route('web.authors.show', ['author_id' => $comment->user->id]) }}" class="d-inline-block mb-2 text-success"> {{ $comment->user->name }} - {{ $comment->created_at->diffForHumans() }}</a>
             </div>
             <div class="card-body">
                 {!! $comment->text !!}
