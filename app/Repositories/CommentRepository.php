@@ -17,10 +17,10 @@ class CommentRepository implements CommentRepositoryInterface
 
     public function getAllCommentsByDate(string $startDate, string $endDate): Collection
     {
-        $start = Carbon::parse($startDate);
-        $end = Carbon::parse($endDate);
+        $start = Carbon::parse($startDate)->startOfday();
+        $end = Carbon::parse($endDate)->endOfday();
 
-        return Comment::whereBetween('comments.created_at', [$start, $end])->report()->get();
+        return Comment::whereBetween('comments.created_at', [$start->format('Y-m-d H:i:s'), $end->format('Y-m-d H:i:s')])->report()->get();
     }
 
     public function getAllCommentsByAuthor(int $UserId): Collection

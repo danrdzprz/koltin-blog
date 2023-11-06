@@ -37,22 +37,20 @@ class ExportComments extends Command implements Isolatable
      */
     public function handle(CommentRepositoryInterface $commentRepository): int
     {
-        // $start_date = $this->ask('start date (Y-m-d)?');
-        // $end_date = $this->ask('end date (Y-m-d)?');
-        $end_date = '2023-11-06';
-        $start_date = '2023-11-05';
+        $start_date = $this->ask('start date (Y-m-d)?');
+        $end_date = $this->ask('end date (Y-m-d)?');
 
-        // $validator = $this->validateInputs($start_date, $end_date);
+        $validator = $this->validateInputs($start_date, $end_date);
 
-        // if ($validator->fails()) {
-        //     $this->info('Comments not exported. See error messages below:');
+        if ($validator->fails()) {
+            $this->info('Comments not exported. See error messages below:');
 
-        //     foreach ($validator->errors()->all() as $error) {
-        //         $this->error($error);
-        //     }
+            foreach ($validator->errors()->all() as $error) {
+                $this->error($error);
+            }
 
-        //     return 1;
-        // }
+            return 1;
+        }
 
         $comments = $commentRepository->getAllCommentsByDate($start_date, $end_date)->toArray();
         $spreadsheet_id = config('google.config.spreadsheet_id');
@@ -86,6 +84,10 @@ class ExportComments extends Command implements Isolatable
         } catch (\Throwable $th) {
             Sheets::spreadsheet($spreadsheet_id)->sheet($sheet_name)->range('')->clear();
         }
+        // if( count( $comments ) ){
+        //     $headers = [ array_keys( array_shift( $comments ) ) ];
+        //     Sheets::sheet($sheet_name)->append( $headers );
+        // }
         Sheets::sheet($sheet_name)->append($comments);
     }
 }
