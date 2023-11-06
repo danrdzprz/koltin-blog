@@ -3,15 +3,26 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\UserRepositoryInterface;
 use Illuminate\View\View;
 
 class AuthorController extends Controller
 {
     /**
+     * Create a new controller instance.
+     */
+    public function __construct(
+        protected UserRepositoryInterface $userRepository,
+    ) {
+    }
+
+    /**
      * Display the specified resource.
      */
-    public function show(string $author): View
+    public function show(int $author_id): View
     {
-        return view('authors.index');
+        $author = $this->userRepository->getUserById($author_id);
+
+        return view('authors.index', ['author' => $author]);
     }
 }

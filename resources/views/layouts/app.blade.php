@@ -33,11 +33,6 @@
       <main class="container main-container">
         @yield('content')
       </main>
-      
-      <footer class="blog-footer">
-        <p>
-          <a href="#">Back to top</a>
-        </p>
-      </footer>
+     
 </body>
 </html>
