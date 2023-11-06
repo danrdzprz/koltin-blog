@@ -107,7 +107,6 @@ class UserController extends Controller
         $this->userRepository->createUser($request->validated());
 
         return response()->json([
-            'status' => true,
             'messagge' => 'Author registered successfully',
         ], 201);
     }

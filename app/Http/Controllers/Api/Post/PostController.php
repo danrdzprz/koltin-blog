@@ -26,7 +26,7 @@ class PostController extends Controller
     /**
      *  @OA\Get(
      *     path="/api/posts",
-     *     tags={"Post"},
+     *     tags={"Posts"},
      *     summary="Paginated post list with user and post",
      *     security={{"bearerAuth":{}}}, *
      *
@@ -77,6 +77,59 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    /**
+     *  @OA\Post(
+     *     path="/api/posts",
+     *     tags={"Posts"},
+     *     security={{"bearerAuth":{}}}, *
+     *     summary="Register a new post",
+     *
+     *      @OA\RequestBody(
+     *      required=true,
+     *      description="Provide All Info Below",
+     *
+     *      @OA\JsonContent(
+     *          required={"email","name","password","password_confirmation"},
+     *
+     *          @OA\Property(property="title", type="string", format="text", example="Test Post"),
+     *          @OA\Property(property="text", type="text", format="text", example="new post"),
+     *          ),
+     *      ),
+     *
+     *      @OA\Response(
+     *          response=201,
+     *          description="Post registered successfully",
+     *
+     *          @OA\JsonContent(
+     *
+     *              @OA\Property(property="message", type="string", example="Post created successfully")
+     *        )
+     *     ),
+     *
+     *   @OA\Response(
+     *    response=422,
+     *    description="Post Not register",
+     *
+     *    @OA\JsonContent(
+     *
+     *       @OA\Property(property="code", type="number", example=422),
+     *       @OA\Property(property="message", type="object", example="{email:[required]}")
+     *        )
+     *     ),
+     *
+     *   @OA\Response(
+     *    response=401,
+     *    description="Required authentication",
+     *
+     *    @OA\JsonContent(
+     *
+     *       @OA\Property(property="code", type="number", example=401),
+     *       @OA\Property(property="message", type="object", example="Unauthenticated")
+     *        )
+     *      )
+     *    )
+     * )
+     */
     public function store(PostCreateRequest $request): JsonResponse
     {
         $data = $request->validated();
@@ -85,8 +138,7 @@ class PostController extends Controller
         $this->postRepository->createPost($data);
 
         return response()->json([
-            'status' => true,
             'messagge' => 'Post created successfully',
-        ]);
+        ], 201);
     }
 }

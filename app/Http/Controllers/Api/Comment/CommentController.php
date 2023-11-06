@@ -28,8 +28,7 @@ class CommentController extends Controller
         $this->commentRepository->createComment($data);
 
         return response()->json([
-            'status' => true,
             'messagge' => 'Comment created successfully',
-        ]);
+        ], 201);
     }
 }
