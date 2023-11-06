@@ -110,6 +110,105 @@
                 }
             }
         },
+        "/api/comments": {
+            "post": {
+                "tags": [
+                    "Comments"
+                ],
+                "summary": "Register a new comment",
+                "operationId": "53d1a8721b9e0eb92377207b4331423f",
+                "requestBody": {
+                    "description": "Provide All Info Below",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "post_id",
+                                    "text"
+                                ],
+                                "properties": {
+                                    "post_id": {
+                                        "type": "number",
+                                        "format": "text",
+                                        "example": 1
+                                    },
+                                    "text": {
+                                        "type": "text",
+                                        "format": "text",
+                                        "example": "new comment"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Comment registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Comment created successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Comment Not register",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number",
+                                            "example": 422
+                                        },
+                                        "message": {
+                                            "type": "object",
+                                            "example": "{text:[required]}"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Required authentication",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "object",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/posts": {
             "get": {
                 "tags": [
@@ -226,10 +325,8 @@
                         "application/json": {
                             "schema": {
                                 "required": [
-                                    "email",
-                                    "name",
-                                    "password",
-                                    "password_confirmation"
+                                    "title",
+                                    "text"
                                 ],
                                 "properties": {
                                     "title": {
@@ -277,7 +374,7 @@
                                         },
                                         "message": {
                                             "type": "object",
-                                            "example": "{email:[required]}"
+                                            "example": "{text:[required]}"
                                         }
                                     },
                                     "type": "object"

@@ -89,7 +89,7 @@ class PostController extends Controller
      *      description="Provide All Info Below",
      *
      *      @OA\JsonContent(
-     *          required={"email","name","password","password_confirmation"},
+     *          required={"title","text"},
      *
      *          @OA\Property(property="title", type="string", format="text", example="Test Post"),
      *          @OA\Property(property="text", type="text", format="text", example="new post"),
@@ -113,7 +113,7 @@ class PostController extends Controller
      *    @OA\JsonContent(
      *
      *       @OA\Property(property="code", type="number", example=422),
-     *       @OA\Property(property="message", type="object", example="{email:[required]}")
+     *       @OA\Property(property="message", type="object", example="{text:[required]}")
      *        )
      *     ),
      *
