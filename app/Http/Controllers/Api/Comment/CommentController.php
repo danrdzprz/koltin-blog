@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentCreateRequest;
 use App\Interfaces\CommentRepositoryInterface;
 use Illuminate\Http\JsonResponse;
+use Revolution\Google\Sheets\Facades\Sheets;
 
 class CommentController extends Controller
 {
@@ -75,6 +76,16 @@ class CommentController extends Controller
      */
     public function store(CommentCreateRequest $request): JsonResponse
     {
+        // // Add new sheet to the configured google spreadsheet
+        // Sheets::spreadsheet('1rg2g5mVzNbqF28t52c2jrW4KPwaOnkOkM6GJ1BPFTGA')->sheet('Sheet 1');
+
+        // $rows = [
+        //     ['1', '2', '3'],
+        //     ['4', '5', '6'],
+        //     ['7', '8', '9'],
+        // ];
+        // // Append multiple rows at once
+        // Sheets::sheet('sheetTitle')->append($rows);
         $data = $request->validated();
         $data['user_id'] = $request->user()->id;
 
