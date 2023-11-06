@@ -19,8 +19,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $post): View
+    public function show(int $post_id): View
     {
-        return view('posts.index');
+        $post = $this->postRepository->getPostById($post_id);
+
+        return view('posts.index', ['post' => $post]);
     }
 }

@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('web.dashboard');
 
-Route::get('/authors/{author}', [AuthorController::class, 'show'])->name('web.authors.show');
+Route::get('/authors/{author_id}', [AuthorController::class, 'show'])->name('web.authors.show');
 
-Route::get('posts/{post}', [PostController::class, 'show'])->name('web.posts.show');
+Route::get('posts/{post_id}', [PostController::class, 'show'])->name('web.posts.show');
 
 Auth::routes();
 
