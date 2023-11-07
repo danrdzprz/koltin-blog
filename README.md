@@ -28,7 +28,7 @@ $ ./vendor/bin/sail down
 
 ## Requisitos
 
-- `docker`
+- `Docker`
 
 ## Instalación
 
@@ -37,10 +37,17 @@ $ ./vendor/bin/sail down
 * Modificar variables de entorno
 * Para el atributo GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION= debemos configurar Google Service Account
 * Para configurar Google Service Account seguí este tutorial => https://stackoverflow.com/questions/70938696/google-sheet-to-laravel-8-integration
-* En directorio raiz ejecutar: docker compose up -d
+* instalar dependencias => docker run --rm -v $(pwd):/opt -w /opt laravelsail/php81-composer:latest composer install
+* En directorio raiz ejecutar => ./vendor/bin/sail up -d
+* Correr migraciones => ./vendor/bin/sail artisan migrate
+* Entrar al contenedor con ./vendor/bin/sail root-shell
+* dentro del contenedor ejecutar el comando => npm install y después npm run build
 
 ## URL de swagger
 * http://localhost/api/documentation
+
+## URL de temporal del proyecto
+http://test.devone.tech/
 
 ## Notas
 En esta prueba me decidí por el patrón repositorio para la reutilización de código.
