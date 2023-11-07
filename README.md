@@ -32,9 +32,15 @@ $ ./vendor/bin/sail down
 
 ## Instalación
 
-* clonar repositorio
-* en directorio raiz ejecutar: ./vendor/bin/sail up -d
+* Clonar repositorio
+* Copiar .env.example como .env
+* Modificar variables de entorno
+* Para el atributo GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION= debemos configurar Google Service Account
+* Para configurar Google Service Account seguí este tutorial => https://stackoverflow.com/questions/70938696/google-sheet-to-laravel-8-integration
+* En directorio raiz ejecutar: docker compose up -d
 
+## URL de swagger
+* http://localhost/api/documentation
 
 ## Notas
 En esta prueba me decidí por el patrón repositorio para la reutilización de código.
