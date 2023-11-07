@@ -27,6 +27,13 @@ class UserController extends Controller
      *     tags={"Authors"},
      *     summary="Paginated authors list with comments and post",
      *
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="number of page to visit",
+     *         required=false,
+     *      ),
+     *
      *      @OA\Response(
      *          response=200,
      *          description="Author registered successfully",

@@ -30,6 +30,13 @@ class PostController extends Controller
      *     summary="Paginated post list with user and post",
      *     security={{"bearerAuth":{}}}, *
      *
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="number of page to visit",
+     *         required=false,
+     *      ),
+     *
      *      @OA\Response(
      *          response=200,
      *          description="Author registered successfully",

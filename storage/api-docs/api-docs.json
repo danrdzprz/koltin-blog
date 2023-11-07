@@ -216,6 +216,14 @@
                 ],
                 "summary": "Paginated post list with user and post",
                 "operationId": "fbf49a8a37f41e6323a594a41dd0d7cd",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "number of page to visit",
+                        "required": false
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Author registered successfully",
@@ -417,6 +425,14 @@
                 ],
                 "summary": "Paginated authors list with comments and post",
                 "operationId": "aef2397961a0e3fdfc433aa36b8707b2",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "number of page to visit",
+                        "required": false
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Author registered successfully",
