@@ -40,6 +40,7 @@ $ ./vendor/bin/sail down
 * instalar dependencias => docker run --rm -v $(pwd):/opt -w /opt laravelsail/php81-composer:latest composer install
 * En directorio raiz ejecutar => ./vendor/bin/sail up -d
 * Correr migraciones => ./vendor/bin/sail artisan migrate
+* Generar Appplication key => ./vendor/bin/sail artisan key:generate
 * Entrar al contenedor con ./vendor/bin/sail root-shell
 * dentro del contenedor ejecutar el comando => npm install y después npm run build
 
