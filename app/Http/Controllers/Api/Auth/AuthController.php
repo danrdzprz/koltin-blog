@@ -84,16 +84,16 @@ class AuthController extends Controller
         $payloadData = $request->validated();
         if (!Auth::attempt($payloadData)) {
             return response()->json([
-                'messagge' => 'Unauthorized',
-            ], 401);
+                'messagge' => __('api.auth.login.failure'),
+            ], JsonResponse::HTTP_UNAUTHORIZED);
         }
 
         $user = $this->userRepository->getUserByEmal($payloadData['email']);
 
         return response()->json([
-            'messagge' => 'User Logged in successfully',
+            'messagge' => __('api.auth.login.success'),
             'token' => $user->createToken('API_TOKEN')->plainTextToken,
-        ], 200);
+        ], JsonResponse::HTTP_OK);
     }
 
     public function logout(): JsonResponse
@@ -101,7 +101,7 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
 
         return response()->json([
-            'messagge' => 'User Logged out successfully',
-        ], 200);
+            'messagge' => __('api.auth.logout.success'),
+        ], JsonResponse::HTTP_OK);
     }
 }

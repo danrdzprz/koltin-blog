@@ -145,7 +145,7 @@ class PostController extends Controller
         $this->postRepository->createPost($data);
 
         return response()->json([
-            'messagge' => 'Post created successfully',
-        ], 201);
+            'messagge' => __('api.posts.create.success'),
+        ], JsonResponse::HTTP_CREATED);
     }
 }

@@ -81,7 +81,7 @@ class CommentController extends Controller
         $this->commentRepository->createComment($data);
 
         return response()->json([
-            'messagge' => 'Comment created successfully',
-        ], 201);
+            'messagge' => __('api.comments.create.success'),
+        ], JsonResponse::HTTP_CREATED);
     }
 }

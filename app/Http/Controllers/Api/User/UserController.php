@@ -114,7 +114,7 @@ class UserController extends Controller
         $this->userRepository->createUser($request->validated());
 
         return response()->json([
-            'messagge' => 'Author registered successfully',
-        ], 201);
+            'messagge' => __('api.authors.create.success'),
+        ], JsonResponse::HTTP_CREATED);
     }
 }

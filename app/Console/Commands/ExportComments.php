@@ -84,10 +84,6 @@ class ExportComments extends Command implements Isolatable
         } catch (\Throwable $th) {
             Sheets::spreadsheet($spreadsheet_id)->sheet($sheet_name)->range('')->clear();
         }
-        // if( count( $comments ) ){
-        //     $headers = [ array_keys( array_shift( $comments ) ) ];
-        //     Sheets::sheet($sheet_name)->append( $headers );
-        // }
         Sheets::sheet($sheet_name)->append($comments);
     }
 }
